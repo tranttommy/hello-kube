@@ -1,12 +1,5 @@
-const express = require('express')
-const { secret } = require('./config')
+const app = require('./app')
 
-const app = express()
+const PORT = 2309
 
-const postgresMiddleware = require('./middleware/postgres')
-const helloRoutes = require('./routes/hello')
-
-app.use('/hello', postgresMiddleware, helloRoutes)
-app.use('/secret', (req, res) => res.send({ secret }))
-
-module.exports = app
+app.listen(PORT, () => console.log(`Server listening on port ${PORT}`))
